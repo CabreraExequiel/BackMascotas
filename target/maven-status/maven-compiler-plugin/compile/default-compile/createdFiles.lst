@@ -1,0 +1,14 @@
+com\backMascotas\mascotas\service\IAdopcionService.class
+com\backMascotas\mascotas\MascotasApplication.class
+com\backMascotas\mascotas\repository\AdopcionRepository.class
+com\backMascotas\mascotas\service\AdopcionService.class
+com\backMascotas\mascotas\service\IUsuarioService.class
+com\backMascotas\mascotas\repository\PerdidosRepository.class
+com\backMascotas\mascotas\service\PerdidosService.class
+com\backMascotas\mascotas\service\UsuarioService.class
+com\backMascotas\mascotas\controller\Controller.class
+com\backMascotas\mascotas\model\Perdidos.class
+com\backMascotas\mascotas\repository\UsuarioRepository.class
+com\backMascotas\mascotas\model\Usuario.class
+com\backMascotas\mascotas\service\IPerdidosService.class
+com\backMascotas\mascotas\model\Adopcion.class
