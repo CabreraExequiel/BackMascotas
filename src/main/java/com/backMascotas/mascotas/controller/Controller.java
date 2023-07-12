@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "https://appmascotas10.web.app", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200", allowedHeaders = "*")
 public class Controller {
     
     @Autowired
@@ -63,4 +63,6 @@ public class Controller {
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
   }
+    
+    
 }
