@@ -22,5 +22,19 @@ public class AdopcionService implements IAdopcionService{
     public List<Adopcion> verAdopcion() {
         return adRepo.findAll();
     }
+
+    @Override
+    public Adopcion obtenerAdopcionPorId(Long id) {
+        return adRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void eliminarAdopcion(Long id) {
+        adRepo.deleteById(id);
+    }
+
+    
+
+    
     
 }
