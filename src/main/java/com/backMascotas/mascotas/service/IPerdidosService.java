@@ -8,4 +8,6 @@ import java.util.List;
 public interface IPerdidosService {
     public List<Perdidos> verMascotas();
     public void crearMascotas(Perdidos per);
+    Perdidos obtenerMascotaPorId(Long id);
+    void eliminarMascota(Long id);
 }

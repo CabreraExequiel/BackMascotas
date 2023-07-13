@@ -22,5 +22,17 @@ public class PerdidosService implements IPerdidosService{
     public void crearMascotas(Perdidos per) {
         perRepo.save(per);
     }
+
+    @Override
+    public Perdidos obtenerMascotaPorId(Long id) {
+return perRepo.findById(id).orElse(null);
+    }
+
+    @Override
+    public void eliminarMascota(Long id) {
+        perRepo.deleteById(id);
+    }
     
+    
+
 }
