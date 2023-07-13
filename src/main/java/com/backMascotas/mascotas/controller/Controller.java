@@ -13,7 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -29,6 +31,7 @@ public class Controller {
     public IAdopcionService adService;
     @Autowired
     public UsuarioService userService;
+    
     
     @PostMapping("/nueva/mascota")
     public void agregarMascotas(@RequestBody Perdidos per){
@@ -63,6 +66,25 @@ public class Controller {
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }
   }
-    
-    
+
+     @DeleteMapping("/eliminar/mascota/{id}")
+    public ResponseEntity<String> eliminarMascota(@PathVariable Long id) {
+        try {
+    // Verificar si la mascota existe en la base de datos
+    Perdidos mascota = perService.obtenerMascotaPorId(id);
+    if (mascota == null) {
+        // La mascota no existe, retornar un error o una respuesta indicando que no se encontró la mascota
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la mascota");
+    }
+
+    // Eliminar la mascota de la base de datos
+    perService.eliminarMascota(id);
+
+    return ResponseEntity.ok("Mascota eliminada correctamente");
+} catch (Exception e) {
+    // En caso de cualquier error, retornar un error o una respuesta indicando el fallo
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar la mascota");
 }
+
+    
+}}
