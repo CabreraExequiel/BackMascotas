@@ -84,6 +84,25 @@ public class Controller {
 } catch (Exception e) {
     // En caso de cualquier error, retornar un error o una respuesta indicando el fallo
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar la mascota");
+}}
+
+@DeleteMapping("/eliminar/adopcion/{id}")
+    public ResponseEntity<String> eliminarAdopcion(@PathVariable Long id) {
+        try {
+    // Verificar si la mascota existe en la base de datos
+    Adopcion mascota = adService.obtenerAdopcionPorId(id);
+    if (mascota == null) {
+        // La mascota no existe, retornar un error o una respuesta indicando que no se encontró la mascota
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No se encontró la mascota");
+    }
+
+    // Eliminar la mascota de la base de datos
+    adService.eliminarAdopcion(id);
+
+    return ResponseEntity.ok("Mascota eliminada correctamente");
+} catch (Exception e) {
+    // En caso de cualquier error, retornar un error o una respuesta indicando el fallo
+    return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al eliminar la mascota");
 }
 
     
